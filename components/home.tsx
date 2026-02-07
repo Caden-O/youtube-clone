@@ -71,7 +71,7 @@ const Videos = [
         channelName: "Valve",
         videoTime: "6:17",
         views: "4.5M",
-        posted: "2 months ago",
+        posted: "2 months",
     },
 
     {
