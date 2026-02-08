@@ -76,13 +76,13 @@ const Videos = [
 
     {
         id: 3,
-        thumbnail: "",
-        title: "",
-        channelImage:"",
-        channelName: "",
-        videoTime: "",
-        views: "",
-        posted: "",
+        thumbnail: "https://i.ytimg.com/vi/Olw6FU8bo4o/maxresdefault.jpg",
+        title: "Hollow Knight 10-player Infection Tag",
+        channelImage:"https://yt3.googleusercontent.com/zmidUZaYpj9C3vH7FMUK91PHdHzJb2F6jOH1sB1FyPpu0M8jPlG-W4jZqyIwwoN-VFzeUjlu=s160-c-k-c0x00ffffff-no-rj",
+        channelName: "fireb0rn",
+        videoTime: "27:14",
+        views: "334K",
+        posted: "3 years",
     },
 
 ];
@@ -151,6 +151,13 @@ const HomePage = () => {
                 </View>
             )}
         />
+
+        {/* Alert Button */}
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <TouchableOpacity onPress={() => alert("Alert Button pressed!")} style={styles.alertButton}>
+                <Text style={styles.alertButtonText}>Alert Button</Text>
+            </TouchableOpacity>
+        </View>
     </View>
   )
 }
@@ -304,5 +311,17 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
         marginLeft: "auto"
+    },
+    alertButton:
+    {
+        width: 200,
+        padding: 8,
+        backgroundColor: "red",
+        borderRadius: 10,
+        alignItems: "center",
+    },
+    alertButtonText: {
+        color: "white",
+        fontWeight: "bold",
     }
 })
