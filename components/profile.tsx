@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Image,
   ScrollView,
@@ -24,9 +23,9 @@ const Videos = [
     id: 1,
     thumbnail: "https://i.ytimg.com/vi/OmKrKTwtukE/maxresdefault.jpg",
     title: "Steam Hardware Announcement",
-    // channelImage:
-    //   "https://yt3.googleusercontent.com/ytc/AIdro_ndrznk18X0Sm4a8-tgnWB6yMUlSq_-hcCjN9SxEJ0S9PM=s160-c-k-c0x00ffffff-no-rj",
-    // channelName: "Valve",
+    channelImage:
+      "https://yt3.googleusercontent.com/ytc/AIdro_ndrznk18X0Sm4a8-tgnWB6yMUlSq_-hcCjN9SxEJ0S9PM=s160-c-k-c0x00ffffff-no-rj",
+    channelName: "Valve",
     videoTime: "6:17",
     views: "4.5m",
     posted: "2 months ago",
@@ -35,9 +34,20 @@ const Videos = [
     id: 2,
     thumbnail: "https://i.ytimg.com/vi/OmKrKTwtukE/maxresdefault.jpg",
     title: "Steam Hardware Announcement",
-    // channelImage:
-    //   "https://yt3.googleusercontent.com/ytc/AIdro_ndrznk18X0Sm4a8-tgnWB6yMUlSq_-hcCjN9SxEJ0S9PM=s160-c-k-c0x00ffffff-no-rj",
-    // channelName: "Valve",
+    channelImage:
+      "https://yt3.googleusercontent.com/ytc/AIdro_ndrznk18X0Sm4a8-tgnWB6yMUlSq_-hcCjN9SxEJ0S9PM=s160-c-k-c0x00ffffff-no-rj",
+    channelName: "Valve",
+    videoTime: "6:17",
+    views: "4.5m",
+    posted: "2 months ago",
+  },
+  {
+    id: 3,
+    thumbnail: "https://i.ytimg.com/vi/OmKrKTwtukE/maxresdefault.jpg",
+    title: "Steam Hardware Announcement",
+    channelImage:
+      "https://yt3.googleusercontent.com/ytc/AIdro_ndrznk18X0Sm4a8-tgnWB6yMUlSq_-hcCjN9SxEJ0S9PM=s160-c-k-c0x00ffffff-no-rj",
+    channelName: "Valve",
     videoTime: "6:17",
     views: "4.5m",
     posted: "2 months ago",
@@ -90,8 +100,9 @@ const Profile = () => {
           <Text style={styles.selectionTextUnselected}>Playlists</Text>
         </View>
       </View>
+
       {/* Page Content (videos) */}
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         {/* For You Section */}
         <Text style={styles.sectionText}>For You</Text>
         <ScrollView
@@ -114,7 +125,40 @@ const Profile = () => {
         </ScrollView>
         {/* Videos Section */}
         <Text style={styles.sectionText}>Videos</Text>
-      </View>
+
+        <View style={styles.videoContainer}>
+          {/* Video Thumbnail */}
+          <View style={styles.thumbnailContainer}>
+            <Image
+              source={{ uri: Videos[1].thumbnail }}
+              style={styles.videoThumbnail}
+            />
+            <View style={styles.videoTimeBadge}>
+              <Text style={styles.videoTimeText}>{Videos[1].videoTime}</Text>
+            </View>
+          </View>
+          {/* Video Information and Data */}
+          <View style={styles.videoInfoContainer}>
+            <Image
+              source={{ uri: Videos[1].channelImage }}
+              style={styles.channelProfileImage}
+            />
+            <View style={styles.videoInfo}>
+              <Text style={styles.videoTitle}>{Videos[1].title}</Text>
+              <Text style={styles.videoData}>
+                {Videos[1].channelName} ● {Videos[1].views} views ●{" "}
+                {Videos[1].posted} ago
+              </Text>
+            </View>
+            <Image
+              style={styles.ellipsisIcon}
+              source={{
+                uri: "https://cdn-icons-png.freepik.com/512/8560/8560609.png",
+              }}
+            />
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -216,5 +260,60 @@ const styles = StyleSheet.create({
     width: 320,
     height: 180,
     borderRadius: 10,
+  },
+  videoContainer: {
+    marginBottom: 15,
+    paddingVertical: 10,
+  },
+  thumbnailContainer: {
+    width: "100%",
+    height: 200,
+  },
+  videoThumbnail: {
+    width: "100%",
+    height: 200,
+    resizeMode: "cover",
+  },
+  videoTimeBadge: {
+    position: "absolute",
+    bottom: 8,
+    right: 8,
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    borderRadius: 4,
+  },
+  videoTimeText: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  videoInfoContainer: {
+    flexDirection: "row",
+    paddingHorizontal: 15,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  channelProfileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 10,
+  },
+  videoTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  videoInfo: {
+    width: "75%",
+  },
+  videoData: {
+    fontSize: 12,
+    color: "#494949",
+  },
+  ellipsisIcon: {
+    width: 30,
+    height: 30,
+    marginLeft: "auto",
   },
 });
