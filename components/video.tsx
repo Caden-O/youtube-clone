@@ -44,16 +44,23 @@ const Video: React.FC<Props> = ({ video }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         {/* Video player (thumbnail) */}
-        <Image
-          source={{
-            uri: Videos[3].thumbnail,
-          }}
-          style={styles.mainVideo}
-        />
+        <View style={styles.videoContainer}>
+          <Image
+            source={{ uri: Videos[3].thumbnail }}
+            style={styles.mainVideo}
+          />
+          <View style={styles.pause}>
+            <Ionicons name="pause" size={35} color="white" />
+          </View>
+          <View style={styles.skipBack}>
+            <Ionicons name="play-skip-back" size={25} color="white" />
+          </View>
+          <View style={styles.skipForward}>
+            <Ionicons name="play-skip-forward" size={25} color="white" />
+          </View>
+        </View>
 
-        {/* <Ionicon name="play-skip-back"/> */}
-        {/* <Ionicon name="pause"/> */}
-        {/* <Ionicon name="play-skip-forward"/> */}
+        <View style={styles.playbar}></View>
 
         {/* channel/video info + main buttons */}
         <View style={styles.allInfo}>
@@ -144,7 +151,10 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
     backgroundColor: "#fff",
   },
-  videoContainer: {},
+  videoContainer: {
+    width: "100%",
+    height: 230,
+  },
   header: {
     flexDirection: "column",
     paddingTop: 20,
@@ -156,6 +166,49 @@ const styles = StyleSheet.create({
     height: 230,
     resizeMode: "cover",
   },
+
+  pause: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: [{ translateX: -30 }, { translateY: -30 }],
+    backgroundColor: "rgba(0,0,0,0.6)",
+    padding: 12,
+    borderRadius: 50,
+    width: 60,
+    height: 60,
+    alignItems: "center",
+  },
+  skipBack: {
+    position: "absolute",
+    top: "50%",
+    left: "25%",
+    transform: [{ translateX: -25 }, { translateY: -25 }],
+    backgroundColor: "rgba(0,0,0,0.6)",
+    padding: 12,
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    alignItems: "center",
+  },
+  skipForward: {
+    position: "absolute",
+    top: "50%",
+    left: "75%",
+    transform: [{ translateX: -25 }, { translateY: -25 }],
+    backgroundColor: "rgba(0,0,0,0.6)",
+    padding: 12,
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    alignItems: "center",
+  },
+
+  playbar: {
+    height: 5,
+    backgroundColor: "#F00",
+  },
+
   allInfo: {
     flexDirection: "column",
     paddingHorizontal: 15,
