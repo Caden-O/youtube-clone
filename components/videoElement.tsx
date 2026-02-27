@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { PropsWithChildren } from "react";
 
 export type VideoItem = {
   id: number;
@@ -9,6 +8,7 @@ export type VideoItem = {
   channelImage: string;
   title: string;
   channelName: string;
+  channelHandle: string;
   views: string;
   posted: string;
 };
