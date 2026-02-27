@@ -257,61 +257,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
   },
-  videoContainer: {
-    marginBottom: 15,
-    paddingBottom: 10,
-  },
-  thumbnailContainer: {
-    width: "100%",
-    height: 300,
-  },
-  videoThumbnail: {
-    width: "100%",
-    height: 300,
-    resizeMode: "cover",
-  },
-  videoTimeBadge: {
-    position: "absolute",
-    bottom: 8,
-    right: 8,
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-    borderRadius: 4,
-  },
-  videoTimeText: {
-    color: "#fff",
-    fontSize: 12,
-    fontWeight: "600",
-  },
-  videoInfoContainer: {
-    flexDirection: "row",
-    paddingHorizontal: 15,
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  channelProfileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  videoTitle: {
-    fontWeight: "bold",
-    fontSize: 18,
-  },
-  videoInfo: {
-    width: "75%",
-  },
-  videoData: {
-    fontSize: 12,
-    color: "#494949",
-  },
-  ellipsisIcon: {
-    width: 30,
-    height: 30,
-    marginLeft: "auto",
-  },
   alertButton: {
     width: 200,
     padding: 8,
