@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Videos from "./videos.json";
+import VideoElement from "./videoElement";
 
 const Channel = {
   bannerImage:
@@ -18,7 +20,7 @@ const Channel = {
   subscribers: "2.54m",
 };
 
-const Videos = [
+const Videos2 = [
   {
     id: 1,
     thumbnail: "https://i.ytimg.com/vi/OmKrKTwtukE/maxresdefault.jpg",
@@ -110,7 +112,7 @@ const Profile = () => {
           showsHorizontalScrollIndicator={false}
           style={styles.HorizontalSectionBar}
         >
-          {Videos.map((video) => (
+          {Videos2.map((video) => (
             <View style={styles.HorizontalSectionVideo} key={video.id}>
               <Image
                 source={{ uri: video.thumbnail }}
@@ -127,36 +129,8 @@ const Profile = () => {
         <Text style={styles.sectionText}>Videos</Text>
 
         <View style={styles.videoContainer}>
-          {/* Video Thumbnail */}
-          <View style={styles.thumbnailContainer}>
-            <Image
-              source={{ uri: Videos[1].thumbnail }}
-              style={styles.videoThumbnail}
-            />
-            <View style={styles.videoTimeBadge}>
-              <Text style={styles.videoTimeText}>{Videos[1].videoTime}</Text>
-            </View>
-          </View>
-          {/* Video Information and Data */}
-          <View style={styles.videoInfoContainer}>
-            <Image
-              source={{ uri: Videos[1].channelImage }}
-              style={styles.channelProfileImage}
-            />
-            <View style={styles.videoInfo}>
-              <Text style={styles.videoTitle}>{Videos[1].title}</Text>
-              <Text style={styles.videoData}>
-                {Videos[1].channelName} ● {Videos[1].views} views ●{" "}
-                {Videos[1].posted} ago
-              </Text>
-            </View>
-            <Image
-              style={styles.ellipsisIcon}
-              source={{
-                uri: "https://cdn-icons-png.freepik.com/512/8560/8560609.png",
-              }}
-            />
-          </View>
+          {/* Video */}
+          <VideoElement video={Videos[1]} />
         </View>
       </ScrollView>
     </View>
