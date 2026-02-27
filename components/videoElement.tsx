@@ -62,16 +62,16 @@ const styles = StyleSheet.create({
   },
   thumbnailContainer: {
     width: "100%",
-    height: 230,
+    height: 270,
   },
   videoThumbnail: {
     width: "100%",
-    height: 230,
+    height: 265,
     resizeMode: "cover",
   },
   videoTimeBadge: {
     position: "absolute",
-    bottom: 8,
+    bottom: 15,
     right: 8,
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     paddingHorizontal: 6,
@@ -85,9 +85,9 @@ const styles = StyleSheet.create({
   },
   videoInfoContainer: {
     flexDirection: "row",
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 5,
   },
   channelProfileImage: {
     width: 40,
