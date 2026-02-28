@@ -18,7 +18,11 @@ import {
 import VideoElement from "./videoElement";
 import { VideoItem } from "./videoElement";
 import VideosData from "./videos.json";
+import ShortsElement from "./shortsSuggested";
+import { ShortsItem } from "./shortsSuggested";
+import ShortsData from "./shorts.json";
 const Videos = VideosData as VideoItem[];
+const Shorts = ShortsData as ShortsItem[];
 
 // chip bar category data
 // horizontal scroll bar
@@ -161,13 +165,38 @@ const HomePage = () => {
         ))}
       </ScrollView>
 
-      {/* Videos Section */}
-      <FlatList
-        data={Videos}
-        keyExtractor={(video) => video.id.toString()}
-        renderItem={({ item }) => <VideoElement video={item} />}
-      />
-
+      {/* Videos and Shorts Suggested Grid */}
+      <ScrollView>
+        {Videos.map((video, idx) => {
+          // insert shorts grid after the second video
+          if (idx === 2) {
+            return (
+              <>
+                <View key="shorts-section" style={styles.shortsSection}>
+                  {/* header for the shorts grid */}
+                  <View style={styles.shortsHeader}>
+                    <Image
+                      source={{
+                        uri: "https://logos-world.net/wp-content/uploads/2024/01/Youtube-Shorts-Logo.jpg",
+                      }}
+                      style={styles.shortsHeaderLogo}
+                    />
+                    <Text style={styles.shortsHeaderEllipsis}>⋮</Text>
+                  </View>
+                  {/* shorts grid */}
+                  <View key={`shorts-grid`} style={styles.shortsGrid}>
+                    {Shorts.map((short) => (
+                      <ShortsElement key={short.id} short={short} />
+                    ))}
+                  </View>
+                </View>
+                <VideoElement key={video.id} video={video} />
+              </>
+            );
+          }
+          return <VideoElement key={video.id} video={video} />;
+        })}
+      </ScrollView>
       {/* Alert Button */}
       <View style={{ justifyContent: "center", alignItems: "center" }}>
         <TouchableOpacity
@@ -263,5 +292,32 @@ const styles = StyleSheet.create({
   alertButtonText: {
     color: "white",
     fontWeight: "bold",
+  },
+  shortsSection: {
+    marginVertical: 15,
+  },
+  shortsHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    marginBottom: 5,
+  },
+  shortsHeaderLogo: {
+    width: 80,
+    height: 50,
+    resizeMode: "contain",
+  },
+  shortsHeaderEllipsis: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  shortsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    justifyContent: "space-between",
   },
 });
