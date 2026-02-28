@@ -8,7 +8,8 @@
     "channelHandle": "kencarson",
     "videoTime": "2:23",
     "views": "9.8M",
-    "posted": "1 year"
+    "posted": "1 year",
+    "watched": true
   },
   {
     "id": 1,
@@ -30,7 +31,8 @@
     "channelHandle": "fireb0rn",
     "videoTime": "27:14",
     "views": "334K",
-    "posted": "3 years"
+    "posted": "3 years",
+    "progress": 0.4
   },
   {
     "id": 3,

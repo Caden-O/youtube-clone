@@ -11,6 +11,8 @@ export type VideoItem = {
   channelHandle: string;
   views: string;
   posted: string;
+  watched?: boolean;
+  progress?: number;
 };
 
 type Props = {
@@ -26,6 +28,18 @@ const VideoElement: React.FC<Props> = ({ video }) => {
           source={{ uri: video.thumbnail }}
           style={styles.videoThumbnail}
         />
+        {/* Show play progress bar if video is watched or has progress */}
+        {(video.watched || video.progress) && (
+          <View style={styles.playBarContainer}>
+            <View
+              style=
+              {[
+                styles.playBarFilled,
+                {width: `${(video.progress || (video.watched ? 100 : 0)) * 100}%`,},
+              ]}
+            />
+          </View>
+        )}
         <View style={styles.videoTimeBadge}>
           <Text style={styles.videoTimeText}>{video.videoTime}</Text>
         </View>
@@ -66,17 +80,29 @@ const styles = StyleSheet.create({
   },
   videoThumbnail: {
     width: "100%",
-    height: 265,
+    height: 270,
     resizeMode: "cover",
   },
   videoTimeBadge: {
     position: "absolute",
-    bottom: 15,
+    bottom: 10,
     right: 8,
     backgroundColor: "rgba(0, 0, 0, 0.8)",
     paddingHorizontal: 6,
     paddingVertical: 4,
     borderRadius: 4,
+  },
+  playBarContainer: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 4,
+    backgroundColor: "#d0d0d0",
+  },
+  playBarFilled: {
+    height: "100%",
+    backgroundColor: "#ff0000",
   },
   videoTimeText: {
     color: "#fff",

@@ -41,7 +41,7 @@ const ChipBar = [
   },
   {
     id: 5,
-    category: "Hype",
+    category: "Gaming",
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const ChipBar = [
   },
   {
     id: 7,
-    category: "Gaming",
+    category: "Entertainment",
   },
   {
     id: 8,
@@ -62,10 +62,6 @@ const ChipBar = [
   {
     id: 10,
     category: "Education",
-  },
-  {
-    id: 11,
-    category: "Entertainment",
   },
 ];
 
