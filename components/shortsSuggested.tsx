@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
 
 export type ShortsItem = {
   id: number;
@@ -13,14 +14,22 @@ type Props = {
   short: ShortsItem;
 };
 const ShortsElement: React.FC<Props> = ({ short }) => {
+  const router = useRouter();
+
   return (
-    <View style={styles.shortCard}>
+    <TouchableOpacity
+      style={styles.shortCard}
+      activeOpacity={0.8}
+      onPress={() =>
+        router.push({ pathname: "/shorts", params: { id: short.id } })
+      }
+    >
       <Image source={{ uri: short.thumbnail }} style={styles.thumbnailImage} />
       <Text style={styles.ellipsis}>⋮</Text>
       <Text style={styles.caption} numberOfLines={2}>
         {short.caption}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -5,11 +5,13 @@ import {
   View,
   Image,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { ShortsItem } from "./shortsSuggested";
 import ShortsData from "./shorts.json";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const Short = ShortsData as ShortsItem[];
 const screenHeight = Dimensions.get("window").height;
@@ -18,6 +20,7 @@ const SHORT_WIDTH = 400;
 const SHORT_HEIGHT = screenHeight - 60;
 
 const Shorts = () => {
+  const router = useRouter();
   const short = Short[0];
 
   return (
@@ -30,7 +33,9 @@ const Shorts = () => {
         {/* Header Overlay */}
         <View style={styles.header}>
           <View style={styles.leftIcons}>
-            <Ionicons name="arrow-back" size={24} color="white" />
+            <TouchableOpacity onPress={() => router.push("/")}>
+              <Ionicons name="arrow-back" size={24} color="white" />
+            </TouchableOpacity>
           </View>
           <View style={styles.rightIcons}>
             <Ionicons name="search" size={24} color="white" />

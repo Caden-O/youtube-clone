@@ -119,6 +119,7 @@ const Profile = () => {
             {subscribed ? "Subscribed" : "Subscribe"}
           </Text>
           {subscribed && (
+          
             <MaterialIcons
               name="keyboard-arrow-down"
               size={22}

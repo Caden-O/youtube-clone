@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
 
 export type VideoItem = {
   id: number;
@@ -20,8 +21,14 @@ type Props = {
 };
 
 const VideoElement: React.FC<Props> = ({ video }) => {
+  const router = useRouter();
+
   return (
-    <View style={styles.videoContainer}>
+    <TouchableOpacity
+      style={styles.videoContainer}
+      activeOpacity={0.8}
+      onPress={() => router.push({ pathname: "/video", params: { id: video.id } })}
+    >
       {/* Video Thumbnail */}
       <View style={styles.thumbnailContainer}>
         <Image
@@ -63,7 +70,7 @@ const VideoElement: React.FC<Props> = ({ video }) => {
           }}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
