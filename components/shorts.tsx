@@ -7,18 +7,18 @@ import {
   Dimensions,
 } from "react-native";
 import React from "react";
-import { VideoItem } from "./videoElement";
-import VideosData from "./videos.json";
+import { ShortsItem } from "./shortsSuggested";
+import ShortsData from "./shorts.json";
 import { Ionicons } from "@expo/vector-icons";
 
-const Videos = VideosData as VideoItem[];
+const Short = ShortsData as ShortsItem[];
 const screenHeight = Dimensions.get("window").height;
 
 const SHORT_WIDTH = 400;
 const SHORT_HEIGHT = screenHeight - 60;
 
 const Shorts = () => {
-  const short = Videos[1];
+  const short = Short[0];
 
   return (
     <View style={styles.container}>
@@ -58,7 +58,7 @@ const Shorts = () => {
             <Text style={styles.channelName}>{short.channelName}</Text>
           </View>
           {/* Short Title */}
-          <Text style={styles.shortTitle}>{short.title}</Text>
+          <Text style={styles.shortTitle}>{short.caption}</Text>
         </View>
       </View>
     </View>

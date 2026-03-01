@@ -3,6 +3,8 @@ import React from "react";
 
 export type ShortsItem = {
   id: number;
+  channelName: string;
+  channelImage: string;
   thumbnail: string;
   caption: string;
 };
