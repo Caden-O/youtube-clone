@@ -39,6 +39,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => <Ionicons name="play" />,
         }}
       />
+      <Tabs.Screen
+        name="shorts"
+        options={{
+          title: "Shorts",
+          tabBarIcon: ({ color, size }) => <Ionicons name="rocket" />,
+        }}
+      />
     </Tabs>
   );
 }
