@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Image,
   ScrollView,
@@ -7,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import Videos from "./videos.json";
 import VideoElement from "./videoElement";
 
@@ -57,6 +59,7 @@ const Videos2 = [
 ];
 
 const Profile = () => {
+  const [subscribed, setSubscribed] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -91,8 +94,38 @@ const Profile = () => {
         </Text>
 
         {/* Subscribe Button */}
-        <TouchableOpacity style={styles.subscribe}>
-          <Text style={styles.subscribeText}>Subscribe</Text>
+        <TouchableOpacity
+          style={[styles.subscribe, subscribed && styles.subscribed]}
+          onPress={() => setSubscribed((s) => !s)}
+          activeOpacity={0.8}
+        >
+          {/* Imported Bell Icon */}
+          {subscribed && (
+            <MaterialIcons
+              name="notifications"
+              size={20}
+              color="#000"
+              style={{ marginRight: 8 }}
+            />
+          )}
+          <Text
+            style={
+              [
+                styles.subscribeText,
+                subscribed && styles.subscribeTextSubscribed,
+              ]
+            }
+          >
+            {subscribed ? "Subscribed" : "Subscribe"}
+          </Text>
+          {subscribed && (
+            <MaterialIcons
+              name="keyboard-arrow-down"
+              size={22}
+              color="#000"
+              style={{ marginLeft: 8 }}
+            />
+          )}
         </TouchableOpacity>
 
         {/* Channel Page Selector */}
@@ -182,10 +215,12 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   subscribe: {
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "rgb(0, 0, 0)",
-    padding: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     marginVertical: 15,
     borderRadius: 25,
   },
@@ -193,6 +228,14 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 20,
+  },
+  subscribed: {
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#000",
+  },
+  subscribeTextSubscribed: {
+    color: "#000",
   },
   selector: {
     flexDirection: "row",
